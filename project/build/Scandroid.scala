@@ -11,10 +11,12 @@ class Scandroid(info: ProjectInfo) extends ParentProject(info) {
 //  lazy val tests = project("tests",  "tests", new TestProject(_), main)
 
   class MainProject(info: ProjectInfo) extends AndroidProject(info) with Defaults with MarketPublish {
-	def keystore = "Scandroid.keystore"
+	override def packageAlignedName = name + "-current" + ".apk"
+	override def keystorePath = info.projectPath + "Scandroid.keystore"
     val keyalias  = "scandroid_debug"
     val scalatest = "org.scalatest" % "scalatest" % "1.2" % "test"
+	override def getPassword = "android"
   }
 
-  class TestProject(info: ProjectInfo) extends AndroidTestProject(info) with Defaults
+//  class TestProject(info: ProjectInfo) extends AndroidTestProject(info) with Defaults
 }
