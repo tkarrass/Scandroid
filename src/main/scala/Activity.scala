@@ -61,7 +61,7 @@ class MainActivity extends Activity with SensorEventListener {
     setContentView(tv)
     tv.setText("Opening connection")
     try {
-      mcServer = new ServerConnection("192.168.178.43", "Android", procPack, procScore) // WTF!¡!¡ <<== Das *M U S S* konfigurierbar werden
+      mcServer = new ServerConnection("test.scubywars.de", "Android", procPack, procScore) // WTF!¡!¡ <<== Das *M U S S* konfigurierbar werden
                                                                            // (was im Übrigen auch für den Client-Namen gilt => ServerConnection.scala)
     } catch {
       case ex =>
