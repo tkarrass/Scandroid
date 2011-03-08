@@ -4,7 +4,7 @@ import java.nio.ByteBuffer
 import java.nio.ByteBuffer._
 import de.tdng2011.game.library.EntityTypes
 
-object ByteUtil {
+object ByteUtil extends ScubywarsLogger {
 
   def toByteArray(typeId : EntityTypes.Value, a : Any*) : Array[Byte] = {
     var arraySize = 6 // id + size
@@ -30,7 +30,7 @@ object ByteUtil {
         case x : Boolean => byteBuffer.put(if(x) 1.byteValue else 0.byteValue)
         case x : String => x.toArray.map(byteBuffer.putChar(_))
         case x : Map[Long, Int] => x.foreach{case (id, score) => {byteBuffer.putLong(id).putInt(score)}}
-        case barbraStreisand => println("error! unknown value, your byte array will not contain " + barbraStreisand)
+        case x => logger.error("error! unknown value, your byte array will not contain " + x)
       }
     }
     arraySize = byteBuffer.position

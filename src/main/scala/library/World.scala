@@ -1,8 +1,8 @@
 package de.tdng2011.game.library
 
-import util.StreamUtil
 import java.nio.ByteBuffer
 import java.io.DataInputStream
+import util.{ScubywarsLogger, StreamReading, StreamUtil}
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,11 +11,9 @@ import java.io.DataInputStream
  * Time: 05:12
  */
 
-case class World(iStream : DataInputStream){
+case class World(iStream : DataInputStream) extends StreamReading(iStream) with ScubywarsLogger {
 
-  private val size = StreamUtil.read(iStream, 4).getInt
-  private val worldData = StreamUtil.read(iStream, size)
-  private val count = worldData.getInt
+  private val count = buf.getInt
 
   private var tmpPlayers : IndexedSeq[Player] = IndexedSeq()
   private var tmpShots : IndexedSeq[Shot] = IndexedSeq()
@@ -23,7 +21,7 @@ case class World(iStream : DataInputStream){
     StreamUtil.read(iStream, 2).getShort match {
       case x if x == EntityTypes.Player.id => tmpPlayers = tmpPlayers :+ new Player(iStream)
       case x if x == EntityTypes.Shot.id   => tmpShots   = tmpShots   :+ new Shot(iStream)
-      case x => println("barbra streisand! !player and !shot")
+      case x => logger.warn("unknown entity in world: " + x)
     }
   }
 

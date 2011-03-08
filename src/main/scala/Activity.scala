@@ -61,7 +61,7 @@ class MainActivity extends Activity with SensorEventListener {
     setContentView(tv)
     tv.setText("Opening connection")
     try {
-      mcServer = new ServerConnection("192.168.1.92", "Android", procPack, procScore) // WTF!¡!¡ <<== Das *M U S S* konfigurierbar werden
+      mcServer = new ServerConnection("192.168.178.43", "Android", procPack, procScore) // WTF!¡!¡ <<== Das *M U S S* konfigurierbar werden
                                                                            // (was im Übrigen auch für den Client-Namen gilt => ServerConnection.scala)
     } catch {
       case ex =>
@@ -108,7 +108,7 @@ class MainActivity extends Activity with SensorEventListener {
     Nil
   }
 
-  def procScore(vcScore: ScoreBoard) = synchronized {
+  def procScore(vcScore: Map[Long, Int]) = synchronized {
     // TODO
     // zudem müssen noch clientevents behandelt werden
   }

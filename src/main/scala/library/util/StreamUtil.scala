@@ -5,9 +5,14 @@ import java.io.DataInputStream
 
 object StreamUtil {
 
-  def read(stream : DataInputStream, count : Int) : ByteBuffer = {
+  def read(iStream : DataInputStream, count : Int) : ByteBuffer = {
     val byteArray = new Array[Byte](count)
-    stream.readFully(byteArray)
+    iStream.readFully(byteArray)
     ByteBuffer.wrap(byteArray)
+  }
+
+  def readBody(iStream : DataInputStream) : ByteBuffer = {
+    val size = StreamUtil.read(iStream, 4).getInt
+    StreamUtil.read(iStream, size)
   }
 }
