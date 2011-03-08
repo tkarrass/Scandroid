@@ -1,0 +1,6 @@
+tests/target
+target
+project/build/target
+project/plugins/target
+out/ 
+project/boot/

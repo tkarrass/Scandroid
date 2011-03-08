@@ -1,0 +1,9 @@
+So: in diesem Repo einfach mal alles was ich dazu hab – das erstellen der Toolchain war ein drama, aber es läuft:
+
+build: sbt compile
+install: sbt install-device, bzw sbt reinstall-device
+
+have fun!
+
+
+btw: bei zeiten mal das repo aufräumen: die binaries müssen nicht sein
