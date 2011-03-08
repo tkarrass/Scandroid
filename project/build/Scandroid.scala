@@ -7,11 +7,12 @@ class Scandroid(info: ProjectInfo) extends ParentProject(info) {
   override def shouldCheckOutputDirectories = false
   override def updateAction = task { None }
 
-  lazy val main  = project(".", "Scandroid", new MainProject(_))
-  lazy val tests = project("tests",  "tests", new TestProject(_), main)
+  lazy val main  = project(".", "Scandroid", new MainProject(_) )
+//  lazy val tests = project("tests",  "tests", new TestProject(_), main)
 
   class MainProject(info: ProjectInfo) extends AndroidProject(info) with Defaults with MarketPublish {
-    val keyalias  = "change-me"
+	def keystore = "Scandroid.keystore"
+    val keyalias  = "scandroid_debug"
     val scalatest = "org.scalatest" % "scalatest" % "1.2" % "test"
   }
 

@@ -1,3 +1,9 @@
+
+ >>> APK's können nun signiert werden: ein entsprechendes keypair liegt in projects/build/Scandroid.keystore und
+ >>> muss vor sign-release nach /home/<user>/.keystore kopiert werden (irgendwie greifen die angaben in den sbt
+ >>> project settings hier nicht – sorry)
+ >>> das Kennwort lautet 'android'
+
 So: in diesem Repo einfach mal alles was ich dazu hab – das erstellen der Toolchain war ein drama, aber es läuft:
 
 build: sbt compile

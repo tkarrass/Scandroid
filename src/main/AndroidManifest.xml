@@ -1,4 +1,5 @@
-<manifest 
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
 android:versionName="0.1" android:versionCode="1" package="de.bitsetter.scandroid" xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-sdk android:minSdkVersion="7"></uses-sdk>
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,3 +13,4 @@ android:versionName="0.1" android:versionCode="1" package="de.bitsetter.scandroi
         </activity>
     </application>
 </manifest>
+
